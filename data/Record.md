@@ -1,3 +1,6 @@
+数据下载网址
+https://web.archive.org/web/20190717044203/https://linqs.soe.ucsc.edu/data
+
 cora
 adj <class 'scipy.sparse._coo.coo_matrix'> (2708, 2708)
 feature <class 'numpy.ndarray'> (2708, 1433) binary
@@ -15,4 +18,4 @@ label <class 'numpy.ndarray'> (19717,) [0 0 0 ... 0 2 2] 0~2
 
 Q&A?
 1.feature是binary或者float是否有影响？
-2.有向图到无向图的区别
+2.有向图到无向图的区别? 转为无向图

@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.sparse as sp
 import random
+import torch
 
 def load_data(name):
     names = ["cora", "citeseer", "pubmed"]
@@ -95,3 +96,11 @@ def split_data(labels, split_plan):
     # print()
 
     return idx_train, idx_val, idx_test
+
+def sparse_mx_to_torch_sparse_tensor(sparse_mx):
+    """Convert a scipy sparse matrix to a torch sparse tensor."""
+    indices = torch.from_numpy(
+        np.vstack((sparse_mx.row, sparse_mx.col)).astype(np.int64))
+    values = torch.from_numpy(sparse_mx.data).float()
+    shape = torch.Size(sparse_mx.shape)
+    return torch.sparse_coo_tensor(indices, values, shape).coalesce()

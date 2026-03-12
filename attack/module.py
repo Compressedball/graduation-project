@@ -45,9 +45,9 @@ class GraphSAGE(nn.Module):
         self.conv2 = SAGEConv(hidden, out_features)
         self.dropout = dropout
 
-    def forward(self, x, adj):
-        x = self.conv1(x, adj)
+    def forward(self, x, edge_index):
+        x = self.conv1(x, edge_index)
         x = F.relu(x)
         x = F.dropout(x, self.dropout, training=self.training)
-        x = self.conv2(x, adj)
+        x = self.conv2(x, edge_index)
         return x
